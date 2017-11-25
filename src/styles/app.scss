@@ -1,0 +1,33 @@
+/* You can add global styles to this file, and also import other style files */
+@import "bootstrap/bootstrap";
+@import "spinner";
+@import "utils";
+@import "rtl";
+@import "responsive";
+
+$ukuran-font: 14px;
+$font-col:rgba(84, 17, 240, 0.75) ;
+$font-col-hover:#ff0000;
+
+* {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: $ukuran-font;
+}  
+
+.rounded-btn{
+    -webkit-border-radius: 50px;
+            border-radius: 50px;
+    color: $font-col;
+    // rgba(255,255,255,0.8);
+    background: white;
+    border: 1px solid $font-col;
+    font-size: $ukuran-font;
+    line-height: 20px;
+    padding: 0 30px;
+}
+.rounded-btn:hover,.rounded-btn:focus,.rounded-btn:active,.rounded-btn:visited{
+    color: white;
+    // darken($font-col, 10%);
+    border: 1px solid white;
+    outline: none;
+}

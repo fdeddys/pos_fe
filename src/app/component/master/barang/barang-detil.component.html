@@ -1,0 +1,90 @@
+<div [@routerTransition]>    
+        
+    <p *ngFor="let alert of alerts">
+        <ngb-alert [type]="alert.type" (close)="closeAlert(alert)">{{ alert.message }}</ngb-alert>
+    </p>
+
+    
+    <div class="card mt-0 mb-0">
+        <div class="card-header">
+            Add / Edit Barang
+            <alert type="success">hello</alert>
+        </div>
+        <div class="card-block"> 
+            <div *ngIf="barang">
+                <div class="form-group row">
+                    <label for="id_barang" class="col-2 col-form-label">ID Barang</label>
+                    <div class="col-10">
+                        <p class="form-control-static">{{barang.id}}</p>
+                    </div>
+                </div>
+                
+                HASIL ={{hasil | json}}
+                <div class="form-group row">
+
+                    <label for="group_barang" class="col-2 col-form-label">Group Barang</label>
+                    <div class="col-10">                        
+                        <!--<ng-template #customItemTemplate let-model="item" let-index="index">
+                             <h5>This is: {{model | json}} Index: {{ index }}</h5>
+                            </ng-template>
+                            [typeaheadItemTemplate]="customItemTemplate" -->
+                            <!-- <pre class="card card-block card-header">Model: {{selected | json}}</pre>
+                            <input [(ngModel)]="selected"
+                                    [typeahead]="states"                                    
+                                    typeaheadOptionField="name"                                    
+                                    class="form-control"> -->
+
+                                    <!-- [typeaheadOptionsLimit]="7" -->
+                                <pre class="card card-block card-header">Model: {{asyncSelected | json}}</pre>
+                                <input [(ngModel)]="asyncSelected"
+                                        [typeahead]="dataSource"
+                                        (typeaheadLoading)="changeTypeaheadLoading($event)"
+                                        (typeaheadNoResults)="changeTypeaheadNoResults($event)"
+                                        (typeaheadOnSelect)="typeaheadOnSelect($event)"                                        
+                                        typeaheadOptionField="keterangan"
+                                        [typeaheadWaitMs]="300"
+                                        placeholder="Locations loaded with timeout"
+                                        class="form-control">
+                                <div *ngIf="typeaheadLoading===true">Loading</div>
+                                <div *ngIf="typeaheadNoResults===true">&#10060; No Results Found</div>
+
+                    </div>
+                </div>
+                HASIL2 ={{hasil2 | json}}
+                <div class="form-group row">
+                    <label for="nama_barang" class="col-2 col-form-label">Nama</label>
+                    <div class="col-10">
+                        <input  type="text" 
+                                class="form-control form-control-sm  " 
+                                [(ngModel)]="barang.nama" 
+                                name="nama_barang"                                 
+                                [autofocus]="true"
+                                >
+                    </div>
+                </div>
+            </div>   
+        </div>      
+        <div class="card-footer">      
+            <button 
+                type="button"
+                class="btn  btn-outline-primary" 
+                (click)="addNew()"
+                ><i class="fa fa-plus fa-lg fa-fw" aria-hidden="true"></i> Tambah
+            </button>      
+            <button 
+                type="button"
+                class="btn  btn-outline-danger" 
+                (click)="save()"
+                ><i class="fa fa-save fa-lg fa-fw"  aria-hidden="true"></i>  Simpan  
+            </button>                        
+            <button 
+                type="button"
+                class="btn  btn-outline-success " 
+                [routerLink]="['/barang/']" >
+                <i class="fa fa-times fa-lg fa-fw" aria-hidden="true"></i> Tutup  
+            </button>  
+        </div>
+    </div>
+
+</div>
+

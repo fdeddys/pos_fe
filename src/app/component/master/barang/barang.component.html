@@ -1,0 +1,84 @@
+<div [@routerTransition]>        
+    <app-page-header [heading]="moduleTitle" [icon]="'fa-bar-chart-o'"></app-page-header>
+    <div class="card mb-3 ">
+        <div class="card-header">
+            List {{moduleTitle}}
+            
+        </div>
+        <div class="card-block">           
+            <div class="row">
+                <div class="col col-lg-2" ><button class="btn btn-outline-primary btn-block "
+                    [routerLink]="['/barang/0']" 
+                    ><i class="fa fa-check fa-plus fa-fw " aria-hidden="true"></i> Tambah</button></div> 
+                <div class="col col-lg-2" ><button  class="btn btn-outline-danger btn-block"
+                    (click)="isOpenFilter= !isOpenFilter"
+                    ><i class="fa fa-search fa-lg fa-fw " aria-hidden="true"></i>Cari </button></div>                 
+            </div>
+            <br>
+            <div class ="row">
+                <div class="col col-sm-12"  *ngIf="isOpenFilter" [@fadeInAnimation] >                         
+                    <div class="card border card-outline-danger mb-3 "  style="width: 50%;padding-top: 20px; padding-left: 20px; padding-bottom: 20px; padding-right: 20px " >
+                        <div class="card-body">
+                            <h4 class="card-title">Pencarian</h4>
+                            <div class="form-group row">
+                                <label for="nama_barang" class="col-2 col-form-label">Nama</label>
+                                <div class="col-10">
+                                    <input  type="text" 
+                                            class="form-control form-control-sm  "                                                 
+                                            name="nama_barang"
+                                            style="width:100%"
+                                            >
+                                </div>
+                            </div>                                
+                            <button  class="btn btn-outline-danger btn-sm"><i class="fa fa-search fa-lg fa-fw " aria-hidden="true"></i>Cari </button>
+                            <button  class="btn btn-outline-success btn-sm" (click)="isOpenFilter= !isOpenFilter"><i class="fa fa-times fa-lg fa-fw " aria-hidden="true"></i>Tutup </button>
+                        </div>
+                    </div>                       
+                </div>
+                <div class="col col-sm-12">
+                    <table class="table table-bordered table-hover table-sm " >
+                    <thead >
+                        <tr>
+                            <th>#</th>            
+                            <th>Nama</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let barang of barangs; let urut = index ">
+                            <th scope="row">{{urut + 1}}</th>            
+                            <td>{{barang.nama}}</td>
+                            <td>
+                              <button 
+                                type="button"
+                                class="btn btn-sm btn-outline-success" 
+                                [routerLink]="['/barang/'+barang.id+'']" 
+                                ><i class="fa fa-edit fa-lg fa-fw"></i>Ubah
+                              </button>                              
+                            </td>
+                         </tr>
+                    </tbody>
+                    </table>
+                </div>
+                <!-- <div class="col col-sm-12">
+                    
+                </div> -->
+            </div>
+                        
+        </div>
+        
+        <div class="card-footer">
+            <ngb-pagination 
+                size="sm" 
+                (pageChange)="pageChange($event)"
+                [collectionSize]="totalElements" 
+                [pageSize]="pageSize" 
+                [boundaryLinks]="true" 
+                [(page)]="currentPage" 
+                aria-label="Default pagination">
+          </ngb-pagination>
+        </div>       
+    </div>    
+        
+          
+</div>
