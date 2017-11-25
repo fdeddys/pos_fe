@@ -22,8 +22,6 @@ export class BarangService {
       .map((res: Response)=> res.json() );
   }
 
-  
-
   save(barang : Barang):Observable<Barang>{
     console.log("save to server ==>", this.serverPath," [body] ==>", barang," ==");
     return this.http.post(this.serverPath,barang)
