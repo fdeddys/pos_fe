@@ -1,7 +1,7 @@
 $topnav-background-color: #9fa8a3;
 // #558C89;
-.topnav {
-    border-radius: 0;
+.topnav {    
+    border-radius: 0px none $topnav-background-color;
     background-color: $topnav-background-color;
     padding : 6px;
     z-index:2;
